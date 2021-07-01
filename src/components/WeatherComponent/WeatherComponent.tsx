@@ -3,6 +3,8 @@ import { WeatherType } from "../../interfaces/interfaces";
 import { SearchPanel } from "../SearchPanel/SearchPanel";
 import { Weather } from "../Weather/Weather";
 import uniqid from "uniqid";
+import { DateBuilder } from "../DateBuilder/DateBuilder";
+import { SidebarFavorites } from "../SidebarFavorites/SidebarFavorites";
 
 export const WeatherComponent: React.FC = () => {
   const api = {
@@ -33,6 +35,8 @@ export const WeatherComponent: React.FC = () => {
   const [favoritesLocations, setFavoritesLocations] = useState<WeatherType[]>(
     []
   );
+
+  const [visibleFavorites, setVisibleFavorites] = useState(false);
 
   const saveLocations = () => {
     if (weatherCurrent.city) {
@@ -125,7 +129,9 @@ export const WeatherComponent: React.FC = () => {
           onChange={(value) => setQuery(value)}
           handlerSearchWeather={() => searchWeather()}
           validate={validate}
+          isVisibleFavorites={() => setVisibleFavorites(true)}
         />
+
         {weatherCurrent.city && (
           <Weather
             state={weatherCurrent}
@@ -133,6 +139,13 @@ export const WeatherComponent: React.FC = () => {
             handlerAddBookmark={saveLocations}
           />
         )}
+        <DateBuilder />
+
+        <SidebarFavorites
+          visible={visibleFavorites}
+          onHide={() => setVisibleFavorites(false)}
+          state={favoritesLocations}
+        />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ interface ComponentProps {
   value: string;
   onChange: (value: string) => void;
   handlerSearchWeather: () => void;
+  isVisibleFavorites: () => void;
   validate: any;
 }
 export const SearchPanel: React.FC<ComponentProps> = ({
@@ -9,6 +10,7 @@ export const SearchPanel: React.FC<ComponentProps> = ({
   onChange,
   validate,
   handlerSearchWeather,
+  isVisibleFavorites,
 }) => {
   return (
     <>
@@ -25,6 +27,10 @@ export const SearchPanel: React.FC<ComponentProps> = ({
         />
         <button className="search-button" onClick={handlerSearchWeather}>
           Search
+        </button>
+
+        <button className="bookmark-button" onClick={isVisibleFavorites}>
+          <i className="material-icons">bookmark</i>
         </button>
       </div>
       {validate.error404 && (

@@ -1,4 +1,5 @@
 import { WeatherType } from "../../interfaces/interfaces";
+import { dateBuilder } from "../DateBuilder/DateBuilder";
 
 interface ComponentProps {
   state: WeatherType;
@@ -10,7 +11,7 @@ export const Weather: React.FC<ComponentProps> = ({
   favorites,
   handlerAddBookmark,
 }) => {
-  const { id, temp, city, country, weatherDescription, weatherIcon, humidity } =
+  const { temp, city, country, weatherDescription, weatherIcon, humidity } =
     state;
 
   const iconUrl = `http://openweathermap.org/img/wn/${weatherIcon}.png`;
@@ -35,7 +36,6 @@ export const Weather: React.FC<ComponentProps> = ({
             )}
           </button>
         </div>
-        <div className="location__date">{/* {dateBuilder(new Date())} */}</div>
       </div>
 
       <div className="temp-panel">

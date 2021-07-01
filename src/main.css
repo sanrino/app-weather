@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: "montseratt", sans-serif;
   font-size: 14px;
+  color: #313131;
 }
 
 .weather-app {
@@ -32,6 +33,15 @@ body {
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
+}
+
+.weather-date {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 3px 3px rgb(50 50 70 / 50%);
+  margin: auto 0 30px;
 }
 
 .shell {
@@ -78,6 +88,18 @@ body {
   cursor: pointer;
 }
 
+.bookmark-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255 255 255 / 80%);
+}
+
 .search-box .search-bar:focus {
   background-color: rgba(255, 255, 255, 0.85);
 }
@@ -115,7 +137,7 @@ body {
   color: #fff;
   font-size: 71px;
   font-weight: 900;
-  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -124,10 +146,10 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 .weather-status {
   color: #fff;
-  font-size: 18px;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
 .weather-status::first-letter {
@@ -136,7 +158,6 @@ body {
 
 .humidity-panel {
   color: #fff;
-  font-size: 18px;
   font-weight: 500;
   text-align: center;
   text-shadow: 3px 3px rgb(50 50 70 / 50%);
@@ -149,4 +170,92 @@ body {
   color: #fff;
   cursor: pointer;
   margin-left: 10px;
+}
+
+.favorites-locations-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.favorites-locations {
+  width: 200px;
+  margin: 0 auto;
+}
+.favorites-locations .location__name {
+  font-size: 20px;
+  text-shadow: 2px 0px rgb(50 50 70 / 50%);
+}
+.favorites-locations .weather-panel {
+  font-size: 14px;
+}
+.favorites-locations .temp {
+  font-size: 30px;
+  min-width: auto;
+  margin: 10px 0git;
+}
+
+.overlay {
+  position: fixed;
+  background: rgb(0 0 0 / 20%);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+.modal-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  animation: fadeInDown 0.8s ease;
+}
+
+.modal {
+  max-width: 700px;
+  padding: 15px;
+  width: 100%;
+  min-height: 250px;
+  border-radius: 15px;
+  box-shadow: 0px 5px rgb(0 0 0 / 20%);
+  position: absolute;
+  background: rgb(44 191 255 / 50%);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #313131;
+}
+
+.modal h2 {
+  font-size: 18px;
+  color: #313131;
+  text-align: center;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

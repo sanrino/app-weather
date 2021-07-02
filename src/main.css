@@ -6,15 +6,18 @@ body {
   padding: 0;
   margin: 0;
   font-family: "montseratt", sans-serif;
-  font-size: 14px;
-  color: #313131;
+  max-width: 768px;
+  margin: 0 auto;
+  color: #fff;
+  text-shadow: 2px 0px rgb(50 50 70 / 50%);
+  font-size: 16px;
 }
 
 .weather-app {
   position: relative;
   background-position: 50%;
   background-size: cover;
-  background-image: url(./assets/warm-bg.jpg);
+  background-image: url(./assets/weather-bg.jpg);
   transition: 0.4s ease;
   display: flex;
   flex-direction: column;
@@ -29,7 +32,7 @@ body {
 
 .weather-wrapper {
   min-height: 100vh;
-  padding: 0 25px;
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
@@ -48,14 +51,14 @@ body {
   margin: auto;
 }
 
-.weather-app--cold {
-  background-image: url(./assets/cold-bg.jpg);
-  transition: 0.4s ease;
-}
-
 .search-panel {
   display: flex;
 }
+
+.error-search-message {
+  padding: 20px 10px;
+}
+
 .search-field {
   display: block;
   padding: 15px;
@@ -97,7 +100,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(255 255 255 / 80%);
+  color: #ffff73;
+  outline: none;
+  margin-left: 5px;
 }
 
 .search-box .search-bar:focus {
@@ -151,8 +156,10 @@ body {
 .weather-status {
   color: #fff;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  display: flex;
+  align-items: center;
 }
-.weather-status::first-letter {
+.weather-status span::first-letter {
   font-size: 130%;
 }
 
@@ -175,10 +182,11 @@ body {
 .favorites-locations-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .favorites-locations {
   width: 200px;
-  margin: 0 auto;
+  margin: 10px 5px;
 }
 .favorites-locations .location__name {
   font-size: 20px;
@@ -187,12 +195,14 @@ body {
 .favorites-locations .weather-panel {
   font-size: 14px;
 }
+
 .favorites-locations .temp {
   font-size: 30px;
   min-width: auto;
-  margin: 10px 0git;
+  margin: 10px 0;
 }
 
+/* modal */
 .overlay {
   position: fixed;
   background: rgb(0 0 0 / 20%);
@@ -215,6 +225,15 @@ body {
   animation: fadeInDown 0.8s ease;
 }
 
+.modal-contant {
+  max-height: 75vh;
+  overflow-y: auto;
+  color: #fff;
+  text-shadow: 2px 0px rgb(50 50 70 / 50%);
+  text-align: center;
+  font-size: 16px;
+}
+
 .modal {
   max-width: 700px;
   padding: 15px;
@@ -233,14 +252,18 @@ body {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: #313131;
+  color: #fff;
 }
 
 .modal h2 {
-  font-size: 18px;
-  color: #313131;
+  font-size: 22px;
+  font-weight: normal;
+  color: #fff;
+  text-shadow: 2px 0px rgb(50 50 70 / 50%);
   text-align: center;
+  margin-bottom: 40px;
 }
+/* End  modal */
 
 @keyframes fadein {
   from {

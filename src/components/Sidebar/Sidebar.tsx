@@ -1,11 +1,13 @@
 interface ComponentProps {
   visible: boolean;
   onHide: () => void;
+  title: string;
 }
 export const Sidebar: React.FC<ComponentProps> = ({
   visible,
   onHide,
   children,
+  title,
 }) => {
   return (
     <>
@@ -17,7 +19,11 @@ export const Sidebar: React.FC<ComponentProps> = ({
               <button className="modal-close" onClick={onHide}>
                 <i className="material-icons">close</i>
               </button>
-              {children}
+              <div className="modal-title">
+                <h2>{title}</h2>
+              </div>
+
+              <div className="modal-contant">{children}</div>
             </div>
           </div>
         </>

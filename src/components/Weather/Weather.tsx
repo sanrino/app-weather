@@ -1,5 +1,4 @@
 import { WeatherType } from "../../interfaces/interfaces";
-import { dateBuilder } from "../DateBuilder/DateBuilder";
 
 interface ComponentProps {
   state: WeatherType;
@@ -43,9 +42,11 @@ export const Weather: React.FC<ComponentProps> = ({
       </div>
 
       <div className="weather-panel">
-        <div className="weather-status">{weatherDescription}</div>
-        <div className="weather-icon">
-          <img src={iconUrl} alt="" />
+        <div className="weather-status">
+          <span>{weatherDescription}</span>
+          <div className="weather-icon">
+            <img src={iconUrl} alt="" />
+          </div>
         </div>
         <div className="humidity-panel">Влажность {humidity}%</div>
       </div>

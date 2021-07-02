@@ -44,11 +44,18 @@ export const WeatherComponent: React.FC = () => {
         setFavoritesLocations([...favoritesLocations, weatherCurrent]);
       } else {
         let newFavoritesLocations = favoritesLocations.filter(
-          (item) => item.city != weatherCurrent.city
+          (item) => item.city !== weatherCurrent.city
         );
         setFavoritesLocations(newFavoritesLocations);
       }
     }
+  };
+
+  const removeLocations = (id: string) => {
+    let newFavoritesLocations = favoritesLocations.filter(
+      (item) => item.id !== id
+    );
+    setFavoritesLocations(newFavoritesLocations);
   };
 
   useEffect(() => {
@@ -60,9 +67,6 @@ export const WeatherComponent: React.FC = () => {
     } else {
       setFavoritesLocations([]);
     }
-    // const raw =
-    //   JSON.parse(localStorage.getItem("favoritesLocations") as string) || [];
-    // setFavoritesLocations(raw);
   }, []);
 
   useEffect(() => {
@@ -73,7 +77,7 @@ export const WeatherComponent: React.FC = () => {
   }, [favoritesLocations]);
 
   const searchWeather = async () => {
-    if (query != "") {
+    if (query !== "") {
       await fetch(
         `${api.base}weather?q=${query}&units=metric&lang=ru&APPID=${api.key}`
       )
@@ -116,13 +120,7 @@ export const WeatherComponent: React.FC = () => {
   };
 
   return (
-    <div
-      className={
-        weatherCurrent.temp > 16
-          ? "weather-app"
-          : "weather-app weather-app--cold"
-      }
-    >
+    <div className="weather-app">
       <div className="weather-wrapper">
         <SearchPanel
           value={query}
@@ -130,6 +128,7 @@ export const WeatherComponent: React.FC = () => {
           handlerSearchWeather={() => searchWeather()}
           validate={validate}
           isVisibleFavorites={() => setVisibleFavorites(true)}
+          favorites={favoritesLocations}
         />
 
         {weatherCurrent.city && (
@@ -145,6 +144,7 @@ export const WeatherComponent: React.FC = () => {
           visible={visibleFavorites}
           onHide={() => setVisibleFavorites(false)}
           state={favoritesLocations}
+          handlerRemoveBookmark={(id) => removeLocations(id)}
         />
       </div>
     </div>

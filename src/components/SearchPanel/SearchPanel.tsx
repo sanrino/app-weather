@@ -1,8 +1,11 @@
+import { WeatherType } from "../../interfaces/interfaces";
+
 interface ComponentProps {
   value: string;
   onChange: (value: string) => void;
   handlerSearchWeather: () => void;
   isVisibleFavorites: () => void;
+  favorites: WeatherType[];
   validate: any;
 }
 export const SearchPanel: React.FC<ComponentProps> = ({
@@ -11,6 +14,7 @@ export const SearchPanel: React.FC<ComponentProps> = ({
   validate,
   handlerSearchWeather,
   isVisibleFavorites,
+  favorites,
 }) => {
   return (
     <>
@@ -28,15 +32,20 @@ export const SearchPanel: React.FC<ComponentProps> = ({
         <button className="search-button" onClick={handlerSearchWeather}>
           Search
         </button>
-
-        <button className="bookmark-button" onClick={isVisibleFavorites}>
-          <i className="material-icons">bookmark</i>
-        </button>
+        {favorites.length > 0 && (
+          <button className="bookmark-button" onClick={isVisibleFavorites}>
+            <i className="material-icons">bookmark</i>
+          </button>
+        )}
       </div>
       {validate.error404 && (
-        <p>Погоды по этому пункту, к сожалению, на сайте нет.</p>
+        <div className="error-search-message">
+          Погоды по этому пункту, к сожалению, на сайте нет.
+        </div>
       )}
-      {validate.emptyField && <p>Введите название города</p>}
+      {validate.emptyField && (
+        <div className="error-search-message">Введите название города</div>
+      )}
     </>
   );
 };

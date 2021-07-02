@@ -24,6 +24,7 @@ body {
   max-width: 767px;
   margin-left: auto;
   margin-right: auto;
+  height: 100%;
 }
 
 .weather-app .middle-shell {
@@ -74,6 +75,7 @@ body {
   transition: 0.4s ease;
   border-bottom-right-radius: 0px;
   flex-grow: 1;
+  margin: 0;
 }
 .search-button {
   width: 100px;
@@ -89,6 +91,7 @@ body {
   font-weight: bold;
   border-left: 1px solid rgb(153 153 153 / 40%);
   cursor: pointer;
+  margin: 0;
 }
 
 .bookmark-button {
@@ -222,7 +225,7 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-  animation: fadeInDown 0.8s ease;
+  animation: fadein 0.5s ease;
 }
 
 .modal-contant {
@@ -271,14 +274,5 @@ body {
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes fadeInDown {
-  0% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
   }
 }

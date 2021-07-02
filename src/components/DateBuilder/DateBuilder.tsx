@@ -1,7 +1,7 @@
 import { days, months } from "../../data/data";
 
 export const dateBuilder = (d: Date) => {
-  let day = days[d.getDay()];
+  let day = days[d.getDay() - 1];
   let date = d.getDate();
   let month = months[d.getMonth()];
   let year = d.getFullYear();
